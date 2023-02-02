@@ -1,6 +1,3 @@
-CREATE database Sakila;
-
-use Sakila;
 -- 
 -- Table structure for table `departments` 
 -- 
