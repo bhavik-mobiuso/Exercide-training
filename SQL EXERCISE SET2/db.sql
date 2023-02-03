@@ -1,6 +1,5 @@
--- 
--- Table structure for table `departments` 
--- 
+USE SAKILA;
+
 CREATE TABLE IF NOT EXISTS `departments` ( 
 `DEPARTMENT_ID` decimal(4,0) NOT NULL DEFAULT '0', 
 `DEPARTMENT_NAME` varchar(30) NOT NULL, 
