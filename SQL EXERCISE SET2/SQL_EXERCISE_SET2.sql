@@ -73,21 +73,23 @@ query would you use to obtain this information? (1 row) */
 
 -- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--- Q1 Which actor has appeared in the most films? (‘107', 'GINA', 'DEGENERES', '42') - INCORRECT
+-- Q1 Which actor has appeared in the most films? (‘107', 'GINA', 'DEGENERES', '42') 
 	
 	USE sakila;
     SELECT 
 		ACTOR.ACTOR_ID,
-        MAX(CONCAT(ACTOR.FIRST_NAME," ",ACTOR.LAST_NAME)) AS ACTOR_NAME
-    FROM
-		ACTOR JOIN FILM_ACTOR 
-        ON ACTOR.ACTOR_ID = FILM_ACTOR.ACTOR_ID
-        JOIN FILM 
-        ON FILM_ACTOR.FILM_ID = FILM.FILM_ID
-	WHERE
-		(SELECT MAX(FILM_ACTOR.FILM_ID) FROM FILM_ACTOR);
+    	CONCAT(ACTOR.FIRST_NAME," ",ACTOR.LAST_NAME)AS ACTOR_NAME,
+        COUNT(FILM_ACTOR.FILM_ID) AS NO_OF_FILMS
+	FROM
+		ACTOR
+			JOIN FILM_ACTOR ON ACTOR.ACTOR_ID = FILM_ACTOR.ACTOR_ID
+	GROUP BY
+		ACTOR.ACTOR_ID
+    ORDER BY 
+		 COUNT(FILM_ACTOR.FILM_ID) DESC
+	LIMIT 1
+    ;
     	
-        
 -- Q2 What is the average length of films by category? (16 rows) 
 
 	SELECT 
@@ -254,31 +256,30 @@ query would you use to obtain this information? (1 row) */
 -- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -- Q1 Write a query in SQL to display the code, name, continent and GNP for all the countries whose country name last second word is 'd’, using “country” table. (22 rows) 
-	USE WORLD;
-	-- PENDING
-    SELECT 
-		CODE,
-		NAME,
-        JSON_EXTRACT(COUNTRYINFO.DOC, "$.geography.continent") AS CONTINENT,
+	
+    USE WORLD;
+	SELECT 
+		JSON_EXTRACT(COUNTRYINFO.DOC, "$.Code") AS CODE,
+        JSON_EXTRACT(COUNTRYINFO.DOC, "$.Name") AS NAME,
+        JSON_EXTRACT(COUNTRYINFO.DOC, "$.geography.Continent") AS CONTINENT,
         JSON_EXTRACT(COUNTRYINFO.DOC, "$.GNP") AS GNP
 	FROM
-		COUNTRY
-			JOIN COUNTRYINFO ON COUNTRY.CODE = JSON_EXTRACT(COUNTRYINFO.DOC, "$.code")
-	WHERE 
-		NAME LIKE "%d_%"
+		COUNTRYINFO
+	WHERE
+		JSON_EXTRACT(COUNTRYINFO.DOC, "$.Name") LIKE "%d__"
 	;
 	
 
 -- Q2 Write a query in SQL to display the code, name, continent and GNP of the 2nd and 3rd highest GNP from “country” table. (Japan & Germany) 
-	-- PENDING
+	
+    SELECT * FROM COUNTRYINFO;
     SELECT 
-		CODE,
-		NAME,
-        JSON_EXTRACT(COUNTRYINFO.DOC, "$.geography.continent") AS CONTINENT,
+		JSON_EXTRACT(COUNTRYINFO.DOC, "$.Code") AS Code,
+        JSON_EXTRACT(COUNTRYINFO.DOC, "$.Name") AS Name,
+        JSON_EXTRACT(COUNTRYINFO.DOC, "$.geography.Continent") AS CONTINENT,
         JSON_EXTRACT(COUNTRYINFO.DOC, "$.GNP") AS GNP
 	FROM
-		COUNTRY
-			JOIN COUNTRYINFO ON COUNTRY.CODE = JSON_EXTRACT(COUNTRYINFO.DOC, "$.code")
+		COUNTRYINFO
 	ORDER BY
 		GNP DESC
 	LIMIT 2 OFFSET 1
