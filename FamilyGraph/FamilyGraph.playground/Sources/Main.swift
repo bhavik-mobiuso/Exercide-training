@@ -2,18 +2,36 @@ import Foundation
 
 class Main {
     
-    //Declare variables
-    var parseObj = ParseCSV()
-    var oprtObj = FamilyGraphOperaion()
+    // intiallize class objects
+    var parseObj = CSVParser()
+    var oprtObj = FamilyGraphOperation()
     var peopleData = [People]()
     var relationshipsData = [Relationships]()
     
     func exercises() {
+        
         print("Exercise - 1  Please implement code and data structures that read the files")
         
-            peopleData = parseObj.CSVParsingPeople(fileName: "people", fileExtension: "csv", model: Model.People)
-            relationshipsData = parseObj.CSVParsingPeople(fileName: "relationships", fileExtension: "csv", model: Model.Relationships)
+            readCSV(fileName: "people", fileExtension: "csv", modelType: Model.People) { data in
+                switch data {
+                    case .success(let data):
+                        self.peopleData = data
+                        
+                    case .failure(let error):
+                        print(error)
+                }
+            }
+
+            for i in 0...data.count - 1{
+                
+                let people = data[i] as! People
+                peopleData[i].name = people.name
+                peopleData[i].email = people.email
+                peopleData[i].age = people.age
+                
+            }
             
+             
         print("Exercise - 2 Validate correct people loaded.")
         
             print("\nTotal \(peopleData.count) No. Of People Loaded")

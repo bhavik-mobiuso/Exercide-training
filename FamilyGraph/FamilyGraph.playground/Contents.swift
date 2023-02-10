@@ -1,5 +1,9 @@
 import Foundation
 
+// constants
+
+let family = "FAMILY"
+
 enum Model {
     
     case People
@@ -19,24 +23,34 @@ struct Relationships {
     var email2:String = ""
 }
 
+
+/*
+func passModel <T> (modelType: T.Type) {
+    print(modelType)
+    let arr = [modelType]
+}
+
+passModel(modelType: [People].self)
+*/
+
 var peopleData = [People] ()
 var relationshipsData = [Relationships] ()
 
-CSVParsingPeople(fileName: "people", fileExtension: "csv")
-CSVParsingRelationships(fileName: "relationships", fileExtension: "csv")
+CSVParsingPeople(fileName: "people", fileExtension: "csv",delimiter: ",")
+CSVParsingRelationships(fileName: "relationships", fileExtension: "csv",delimiter: ",")
 
-func CSVParsingPeople(fileName: String,fileExtension: String){
+
+func CSVParsingPeople(fileName: String,fileExtension: String,delimiter: String){
     var formattedData = [[String]]()
         
-    let fileURL = try! FileManager.default.url(for: .desktopDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    let file = fileURL.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
+    let filepath = Bundle.main.path(forResource: fileName, ofType: fileExtension)
     
-      do{
-            let resultData = try String(contentsOf: file)
+    do{
+        let resultData = try String(contentsOfFile: filepath ?? "")
             let rows = resultData.components(separatedBy: "\n")
-            
+            print(rows)
               for i in rows {
-                  let columns = i.components(separatedBy: ",")
+                  let columns = i.components(separatedBy: delimiter)
                   formattedData.append(columns)
               }
               formattedData.removeLast()
@@ -53,18 +67,17 @@ func CSVParsingPeople(fileName: String,fileExtension: String){
       }
 }
 
-func CSVParsingRelationships(fileName: String,fileExtension: String) {
+func CSVParsingRelationships(fileName: String,fileExtension: String,delimiter: String) {
     var formattedData = [[String]]()
         
-    let fileURL = try! FileManager.default.url(for: .desktopDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    let file = fileURL.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
+    let filepath = Bundle.main.path(forResource: fileName, ofType: fileExtension)
     
-      do{
-            let resultData = try String(contentsOf: file)
+    do{
+        let resultData = try String(contentsOfFile: filepath ?? "")
             let rows = resultData.components(separatedBy: "\n")
             
               for i in rows {
-                  let columns = i.components(separatedBy: ",")
+                  let columns = i.components(separatedBy: delimiter)
                   formattedData.append(columns)
               }
               for i in formattedData{
@@ -76,15 +89,16 @@ func CSVParsingRelationships(fileName: String,fileExtension: String) {
         print(error)
       }
 }
-
-
 print("Exercise - 2 Validate correct people loaded.")
 
 print("\nTotal \(peopleData.count) No. Of People Loaded")
 print("\nPeople Data\n")
+
 for i in peopleData {
     print(i)
 }
+
+
 print("\nRelationship Data\n")
 for i in relationshipsData {
     print(i)
@@ -130,16 +144,16 @@ func countFamilyMembers(name: String) -> Int {
             count = count + 1// Include Member himself/herself
             for relationship in relationshipsData {
                 
-                if (people.email == relationship.email || people.email == relationship.email2 && relationship.relation == "FAMILY"){
+                if (people.email == relationship.email || people.email == relationship.email2 && relationship.relation == family){
                     count = count + 1
                     tmpEmails.append(relationship.email2)
                 }
                 else {
-                    if tmpEmails.contains(relationship.email) && relationship.relation == "FAMILY" && !tmpEmails.contains(relationship.email2) {
-                        print("Another Member Found In \(people.name) Family")
+                    if tmpEmails.contains(relationship.email) && relationship.relation == family && !tmpEmails.contains(relationship.email2) {
+                        print("Another Member Found In \(people.name)'s Family")
                     }
-                    else if !tmpEmails.contains(relationship.email) && relationship.relation == "FAMILY" && tmpEmails.contains(relationship.email2) {
-                        print("Another Member Found In \(people.name) Family - \(relationship.email)")
+                    else if !tmpEmails.contains(relationship.email) && relationship.relation == family && tmpEmails.contains(relationship.email2) {
+                        print("Another Member Found In \(people.name)'s Family - \(relationship.email)")
                         count = count + 1
                     }
                 }

@@ -1,24 +1,20 @@
 import Foundation
 
-class FamilyGraphOperaion {
-    
-    static let obj = FamilyGraphOperaion()
-    var parseObj = ParseCSV()
-    
-    func retriveData() {
-        var peopleData = parseObj.CSVParsingPeople(fileName: "people", fileExtension: "csv", model: Model.People)
-        var relationshipsData = parseObj.CSVParsingPeople(fileName: "relationships", fileExtension: "csv", model: Model.Relationships)
-        
-    }
-    func countFamilyMembers(name: String) -> Int {
+class FamilyGraphOperation {
 
-        var count = 0 // counter variable for family members
-        var tmpEmails = [String]()//Family Members Email id
+    var count = 0
+    
+    func countFamilyMembers(name: String,peopleCollection: [People],relationhipsCollection: [Relationships]) -> Int {
+        var peopleData = peopleCollection
+        var relationshipsData = relationhipsCollection
+        var tmpEmails = [String]() // family members email id
         tmpEmails.removeAll()
+        
         for people in peopleData {
-            
+        
             if people.name == name {
-                count = count + 1// Include Member himself/herself
+
+                count = count + 1// include member himself/herself
                 for relationship in relationshipsData {
                     
                     if (people.email == relationship.email || people.email == relationship.email2 && relationship.relation == "FAMILY"){
@@ -39,8 +35,11 @@ class FamilyGraphOperaion {
         }
         return count
     }
-    func checkRelations(name: String, noOfRelation: Int) {
-        var count = 0
+    func checkRelations(name: String, noOfRelation: Int,peopleCollection: [People],relationhipsCollection: [Relationships]) {
+        
+        var peopleData = peopleCollection
+        var relationshipsData = relationhipsCollection
+        
         for people in peopleData {
             for relationship in relationshipsData {
                 if people.email == relationship.email || people.email == relationship.email2 {
