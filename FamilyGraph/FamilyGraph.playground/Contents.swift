@@ -48,7 +48,6 @@ func CSVParsingPeople(fileName: String,fileExtension: String,delimiter: String){
     do{
         let resultData = try String(contentsOfFile: filepath ?? "")
             let rows = resultData.components(separatedBy: "\n")
-            print(rows)
               for i in rows {
                   let columns = i.components(separatedBy: delimiter)
                   formattedData.append(columns)
