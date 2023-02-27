@@ -4,7 +4,7 @@ class FamilyGraphOperation {
 
     var count = 0
     
-    func countFamilyMembers(name: String,peopleCollection: [People],relationhipsCollection: [Relationships]) -> Int {
+    func countFamilyMembers(name: String,peopleCollection: [People],relationhipsCollection: [Relation]) -> Int {
         var peopleData = peopleCollection
         var relationshipsData = relationhipsCollection
         var tmpEmails = [String]() // family members email id
@@ -35,7 +35,7 @@ class FamilyGraphOperation {
         }
         return count
     }
-    func checkRelations(name: String, noOfRelation: Int,peopleCollection: [People],relationhipsCollection: [Relationships]) {
+    func checkRelations(name: String, noOfRelation: Int,peopleCollection: [People],relationhipsCollection: [Relation]) {
         
         var peopleData = peopleCollection
         var relationshipsData = relationhipsCollection

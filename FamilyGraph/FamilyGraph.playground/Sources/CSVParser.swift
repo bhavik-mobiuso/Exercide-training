@@ -26,9 +26,9 @@ final class CSVParser {
                 return peopleData
                 
             case .Relationships:
-                var relationshipsData = [Relationships]()
+                var relationshipsData = [Relation]()
                 for i in rawData{
-                    relationshipsData.append(Relationships(email: i[0],relation: i[1],email2: i[2]))
+                    relationshipsData.append(Relation(email: i[0],relation: i[1],email2: i[2]))
                 }
                 return relationshipsData
             }
@@ -63,9 +63,9 @@ final class CSVParser {
                 completion(.success(peopleData as! T))
                 
             case .Relationships:
-                var relationshipsData = [Relationships]()
+                var relationshipsData = [Relation]()
                 for i in rawData{
-                    relationshipsData.append(Relationships(email: i[0],relation: i[1],email2: i[2]))
+                    relationshipsData.append(Relation(email: i[0],relation: i[1],email2: i[2]))
                 }
                 completion(.success(relationshipsData as! T))
             }
