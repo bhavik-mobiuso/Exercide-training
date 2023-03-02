@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  MeasurementDemoApp
+//  MeasureDemo
 //
-//  Created by Bhavik on 16/02/23.
+//  Created by Bhavik on 28/02/23.
 //
 
 import UIKit

@@ -12,6 +12,11 @@ import Vision
 class DrawingBoundingBoxView: UIView {
     
     static private var colors: [String: UIColor] = [:]
+    var pointA: CGFloat?
+    var pointB: CGFloat?
+    var isObjACounted:Bool = false
+    
+    
     
     public func labelColor(with label: String) -> UIColor {
         if let color = DrawingBoundingBoxView.colors[label] {
@@ -33,9 +38,16 @@ class DrawingBoundingBoxView: UIView {
     func drawBoxs(with predictions: [VNRecognizedObjectObservation]) {
         subviews.forEach({ $0.removeFromSuperview() })
         
-        for prediction in predictions {
-            createLabelAndBox(prediction: prediction)
+        
+        if predictions.count < 3 {
+            print("No. Of Objects: ",predictions.count)
+            for prediction in predictions {
+                createLabelAndBox(prediction: prediction)
+            }
         }
+        print("More than two objects found")
+        
+        
     }
     
     func createLabelAndBox(prediction: VNRecognizedObjectObservation) {
@@ -52,6 +64,31 @@ class DrawingBoundingBoxView: UIView {
         bgView.backgroundColor = UIColor.clear
         addSubview(bgView)
         
+        if !isObjACounted {
+            let objectPoint = bounds.minX + bgView.frame.minX + bgView.frame.width
+            pointA = bounds.width - objectPoint
+            isObjACounted = true
+        }
+        else {
+            pointB = bgView.frame.minX - pointA!
+            print(pointB)
+            
+        }
+        
+        
+        let aPath = UIBezierPath()
+
+        aPath.move(to: CGPoint(x:0, y:50))
+        aPath.addLine(to: CGPoint(x: 20, y: 200))
+
+        // Keep using the method addLine until you get to the one where about to close the path
+        aPath.close()
+
+        // If you want to stroke it with a red color
+        UIColor.red.set()
+        aPath.lineWidth = 10
+        aPath.stroke()
+        
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         label.text = labelString ?? "N/A"
         label.font = UIFont.systemFont(ofSize: 13)
@@ -62,6 +99,16 @@ class DrawingBoundingBoxView: UIView {
                              width: label.frame.width, height: label.frame.height)
         addSubview(label)
     }
+    
+    func CGPointDistanceSquared(from: CGPoint, to: CGPoint) -> CGFloat {
+        return (from.x - to.x) * (from.x - to.x) + (from.y - to.y) * (from.y - to.y)
+    }
+
+    func CGPointDistance(from: CGPoint, to: CGPoint) -> CGFloat {
+        return sqrt(CGPointDistanceSquared(from: from, to: to))
+    }
+    
+   
 }
 
 extension VNRecognizedObjectObservation {

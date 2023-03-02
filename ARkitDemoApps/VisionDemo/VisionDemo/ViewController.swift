@@ -172,7 +172,6 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCell") else {
             return UITableViewCell()
         }
-
         let rectString = predictions[indexPath.row].boundingBox.toString(digit: 2)
         let confidence = predictions[indexPath.row].labels.first?.confidence ?? -1
         let confidenceString = String(format: "%.3f", confidence/*Math.sigmoid(confidence)*/)

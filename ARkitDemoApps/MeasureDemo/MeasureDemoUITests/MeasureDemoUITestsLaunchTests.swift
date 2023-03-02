@@ -1,13 +1,13 @@
 //
-//  MeasurementDemoAppUITestsLaunchTests.swift
-//  MeasurementDemoAppUITests
+//  MeasureDemoUITestsLaunchTests.swift
+//  MeasureDemoUITests
 //
-//  Created by Bhavik on 16/02/23.
+//  Created by Bhavik on 28/02/23.
 //
 
 import XCTest
 
-final class MeasurementDemoAppUITestsLaunchTests: XCTestCase {
+final class MeasureDemoUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

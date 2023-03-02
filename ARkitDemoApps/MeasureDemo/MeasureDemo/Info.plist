@@ -22,6 +22,6 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>&quot;Need your camera access for identifying objects&quot;</string>
+	<string>App wants to access your access camera for measurement</string>
 </dict>
 </plist>
