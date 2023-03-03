@@ -10,48 +10,21 @@ import ARKit
 
 class AreaViewController: MeasureViewController {
     
-    var lengthNodes = NSMutableArray()
-    var lineNodes = NSMutableArray()
-    var startNode: SCNNode?
-    var endNode: SCNNode?
-    var lineNode: SCNNode?
+    fileprivate lazy var vectorZero = SCNVector3()
+    fileprivate lazy var startValue = SCNVector3()
+    fileprivate lazy var endValue = SCNVector3()
+    fileprivate var currentLine: Line?
+    fileprivate lazy var unit: DistanceUnit = .meter
+    fileprivate lazy var lines: [Line] = []
+    fileprivate lazy var startPoints : [SCNVector3] = []
+    fileprivate lazy var endPoints : [SCNVector3] = []
     
-    var isStartPointSelected: Bool = false
-    
-    var allPointNodes: [Any] {
-        get {
-            return lengthNodes as! [Any]
-        }
-    }
-    @IBOutlet weak var areaLabel: UILabel!
+    var isMeasuring: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
-    }
-    
-    func hitResult(forPoint point: CGPoint) -> SCNVector3? {
-        let hitTestResults = sceneView.hitTest(point, types: .featurePoint)
-        if let result = hitTestResults.first {
-            let vector = result.worldTransform.columns.3
-            return SCNVector3(vector.x, vector.y, vector.z)
-        } else {
-            return nil
-        }
-    }
-    
-    func nodeWithPosition(_ position: SCNVector3) -> SCNNode {
-        let sphere = SCNSphere(radius: 0.003)
-        
-        sphere.firstMaterial?.diffuse.contents = UIColor.white
-        sphere.firstMaterial?.lightingModel = .constant
-        sphere.firstMaterial?.isDoubleSided = true
-        
-        
-        let node = SCNNode(geometry: sphere)
-        node.position = position
-        
-        return node
+        clearBtn.isEnabled = false
     }
     
     //MARK: - IBActions
@@ -63,35 +36,28 @@ class AreaViewController: MeasureViewController {
             let node = self.nodeWithPosition(position)
             sceneView.scene.rootNode.addChildNode(node)
                 
-            
-            if !isStartPointSelected {
-                startNode = node
-                isStartPointSelected = true
+            if !isMeasuring {
+                isMeasuring = true
             }
             else {
-                endNode = node
-                let distance = getDistanceStringBetween(pos1: startNode!.position, pos2: endNode!.position)
-                print(distance)
-                
-                addText(text: distance, pos: startNode!.position)
-                guard let curretPosition = sceneView.hitResult(forPoint: pointLocation), let start = self.startNode else {
-                    return
+                if let line = currentLine {
+                    lines.append(line)
+                    currentLine = nil
                 }
-                self.lineNode = self.getDrawnLineFrom(pos1: curretPosition,pos2: start.position)
-                self.sceneView.scene.rootNode.addChildNode(self.lineNode!)
-                startNode = nil
-                isStartPointSelected = false
-                
+                isMeasuring = false
+                clearBtn.isEnabled = true
+                startValue = SCNVector3()
             }
         }
         
     }
-    @IBAction func resetBtnTap(_ sender: UIButton) {
+    @IBAction func clearBtnTap(_ sender: UIButton) {
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
         node.removeFromParentNode() }
-        self.lineNode?.removeFromParentNode()
+        self.currentLine?.removeFromParentNode()
 
     }
+    
     
     @IBAction func capturePhotoBtnTap(_ sender: UIButton) {
         
@@ -106,28 +72,51 @@ class AreaViewController: MeasureViewController {
         
     }
     
+    @IBAction func unitBtnTap(_ sender: UIButton) {
+        
+        let alertVC = UIAlertController(title: "Settings", message: "Please select distance unit options", preferredStyle: .actionSheet)
+        alertVC.addAction(UIAlertAction(title: DistanceUnit.centimeter.title, style: .default) { [weak self] _ in
+            self?.unit = .centimeter
+        })
+        alertVC.addAction(UIAlertAction(title: DistanceUnit.inch.title, style: .default) { [weak self] _ in
+            self?.unit = .inch
+        })
+        alertVC.addAction(UIAlertAction(title: DistanceUnit.meter.title, style: .default) { [weak self] _ in
+            self?.unit = .meter
+        })
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    fileprivate func detectObjects() {
+        
+        let pointLocation = view.convert(screenCenterPoint, to: sceneView)
+        
+        if let position: SCNVector3 = sceneView.hitResult(forPoint: pointLocation){
+            if isMeasuring {
+                if startValue == vectorZero {
+                    startValue = position
+                    currentLine = Line(sceneView: sceneView, startVector: startValue, unit: unit)
+                }
+                endValue = position
+                currentLine?.update(to: endValue)
+                //messageLabel.text = currentLine?.distance(to: endValue) ?? "Calculating…"
+            }
+        }
+        
+    }
+    
 }
-
 extension AreaViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        let dotNodes = allPointNodes as! [SCNNode]
-        if dotNodes.count > 0, let currentCameraPosition = self.sceneView.pointOfView {
-            updateScaleFromCameraForNodes(dotNodes, fromPointOfView: currentCameraPosition)
+        DispatchQueue.main.async { [weak self] in
+            self?.detectObjects()
         }
-        
-        DispatchQueue.main.async {
-            let pointLocation = self.view.convert(self.screenCenterPoint, to: self.sceneView)
-            
-            guard let curretPosition = self.hitResult(forPoint: pointLocation), let start = self.startNode else {
-                return
-            }
-            self.lineNode?.removeFromParentNode()
-            self.lineNode = self.getDrawnLineFrom(pos1: curretPosition,pos2: start.position)
-            self.sceneView.scene.rootNode.addChildNode(self.lineNode!)
-            
-        }
-        
     }
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         switch camera.trackingState {
@@ -136,5 +125,25 @@ extension AreaViewController: ARSCNViewDelegate {
             default:
                 break
         }
+    }
+}
+extension UIViewController {
+
+    func showToast(message : String) {
+
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/4, y: self.view.frame.size.height-100, width: 200, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+             toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
     }
 }

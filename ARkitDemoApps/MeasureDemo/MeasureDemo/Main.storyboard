@@ -36,8 +36,8 @@
                                             <action selector="addPoint:" destination="BYZ-38-t0r" eventType="touchUpInside" id="52g-4B-4Hi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d55-16-cOB">
-                                        <rect key="frame" x="293" y="772" width="80" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d55-16-cOB" userLabel="clearBtn">
+                                        <rect key="frame" x="20" y="82" width="80" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="CoQ-NE-XPl"/>
@@ -46,9 +46,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Reset"/>
+                                        <state key="normal" title="clear"/>
                                         <connections>
-                                            <action selector="resetBtnTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lnm-F4-Txz"/>
+                                            <action selector="clearBtnTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xlp-51-j5J"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.inset.filled" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GKk-Ox-ZoJ">
@@ -73,20 +73,34 @@
                                             <action selector="capturePhotoBtnTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ana-1l-fTF"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpU-kQ-QpK">
+                                        <rect key="frame" x="298" y="769.66666666666663" width="75" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="wL3-oP-WUa"/>
+                                            <constraint firstAttribute="height" constant="35" id="wc5-fK-ld0"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Unit"/>
+                                        <connections>
+                                            <action selector="unitBtnTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sZS-Pu-8hr"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="d55-16-cOB" firstAttribute="trailing" secondItem="WwD-Bp-YfF" secondAttribute="trailing" constant="-20" id="6jN-4W-eog"/>
                                     <constraint firstAttribute="trailing" secondItem="WwD-Bp-YfF" secondAttribute="trailing" id="7lt-Z8-8GS"/>
-                                    <constraint firstItem="d55-16-cOB" firstAttribute="bottom" secondItem="WwD-Bp-YfF" secondAttribute="bottom" constant="-40" id="BHQ-rw-vWe"/>
                                     <constraint firstItem="WwD-Bp-YfF" firstAttribute="top" secondItem="BNX-RZ-c1i" secondAttribute="top" id="Gmc-Ea-x9B"/>
                                     <constraint firstItem="GKk-Ox-ZoJ" firstAttribute="centerY" secondItem="BNX-RZ-c1i" secondAttribute="centerY" id="IPQ-UW-N87"/>
+                                    <constraint firstItem="d55-16-cOB" firstAttribute="leading" secondItem="BNX-RZ-c1i" secondAttribute="leading" constant="20" id="MqR-kN-93t"/>
+                                    <constraint firstAttribute="trailing" secondItem="SpU-kQ-QpK" secondAttribute="trailing" constant="20" id="NdD-QU-X8p"/>
                                     <constraint firstItem="GKk-Ox-ZoJ" firstAttribute="centerX" secondItem="BNX-RZ-c1i" secondAttribute="centerX" id="WS2-lY-JoH"/>
                                     <constraint firstAttribute="bottom" secondItem="WwD-Bp-YfF" secondAttribute="bottom" id="lN1-0C-sIj"/>
                                     <constraint firstAttribute="bottom" secondItem="cwr-Rc-RfU" secondAttribute="bottom" constant="40" id="qdp-qv-jYm"/>
                                     <constraint firstItem="hhi-hY-L8t" firstAttribute="bottom" secondItem="WwD-Bp-YfF" secondAttribute="bottom" constant="-50" id="sL0-oi-xzG"/>
                                     <constraint firstItem="hhi-hY-L8t" firstAttribute="centerX" secondItem="WwD-Bp-YfF" secondAttribute="centerX" id="u8r-Um-SL7"/>
                                     <constraint firstItem="WwD-Bp-YfF" firstAttribute="leading" secondItem="BNX-RZ-c1i" secondAttribute="leading" id="vaT-yh-mZS"/>
+                                    <constraint firstItem="SpU-kQ-QpK" firstAttribute="centerY" secondItem="cwr-Rc-RfU" secondAttribute="centerY" id="xkJ-NK-0QQ"/>
                                     <constraint firstItem="cwr-Rc-RfU" firstAttribute="leading" secondItem="BNX-RZ-c1i" secondAttribute="leading" constant="20" id="zUd-h1-60N"/>
                                 </constraints>
                             </view>
@@ -95,6 +109,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="BNX-RZ-c1i" secondAttribute="bottom" id="W6Z-38-JRs"/>
+                            <constraint firstItem="d55-16-cOB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23" id="es6-S3-klt"/>
                             <constraint firstItem="BNX-RZ-c1i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iGs-me-61R"/>
                             <constraint firstItem="BNX-RZ-c1i" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nJF-1J-xrP"/>
                             <constraint firstItem="BNX-RZ-c1i" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="rdq-GA-RhO"/>
@@ -102,7 +117,7 @@
                     </view>
                     <connections>
                         <outlet property="centerPointImageView" destination="GKk-Ox-ZoJ" id="80s-fl-Jtt"/>
-                        <outlet property="resetBtn" destination="d55-16-cOB" id="2Uv-Mb-KhD"/>
+                        <outlet property="clearBtn" destination="d55-16-cOB" id="3sN-PM-DDm"/>
                         <outlet property="sceneView" destination="WwD-Bp-YfF" id="iwL-V0-T4w"/>
                     </connections>
                 </viewController>

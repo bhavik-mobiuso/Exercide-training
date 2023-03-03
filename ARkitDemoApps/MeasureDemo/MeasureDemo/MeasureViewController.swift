@@ -12,7 +12,7 @@ class MeasureViewController: UIViewController {
 
     @IBOutlet weak var centerPointImageView: UIImageView!
     @IBOutlet weak var sceneView: MeasureSCNView!
-    @IBOutlet weak var resetBtn: UIButton!
+    @IBOutlet weak var clearBtn: UIButton!
     
     lazy var screenCenterPoint: CGPoint = {
         return centerPointImageView.center
@@ -20,7 +20,7 @@ class MeasureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resetBtn.layer.cornerRadius = 10
+        clearBtn.layer.cornerRadius = 10
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,125 +37,34 @@ class MeasureViewController: UIViewController {
         return true
     }
     
-    //MARK: - Helper methods
-
-    func getDrawnLineFrom(pos1: SCNVector3, pos2: SCNVector3) -> SCNNode {
-        let line = generateLine(startPoint: pos1, endPoint: pos2)
-        let lineInBetween1 = SCNNode(geometry: line)
-        return lineInBetween1
-    }
-
-    func generateLine( startPoint: SCNVector3, endPoint: SCNVector3) -> SCNGeometry {
-            
-            let vertices: [SCNVector3] = [startPoint, endPoint]
-            let data = NSData(bytes: vertices, length: MemoryLayout<SCNVector3>.size * vertices.count) as Data
-            
-            let vertexSource = SCNGeometrySource(data: data,
-                                                 semantic: .vertex,
-                                                 vectorCount: vertices.count,
-                                                 usesFloatComponents: true,
-                                                 componentsPerVector: 3,
-                                                 bytesPerComponent: MemoryLayout<Float>.size,
-                                                 dataOffset: 0,
-                                                 dataStride: MemoryLayout<SCNVector3>.stride)
-            
-            let indices: [Int32] = [ 0, 1]
-            
-            let indexData = NSData(bytes: indices, length: MemoryLayout<Int32>.size * indices.count) as Data
-            
-            let element = SCNGeometryElement(data: indexData,
-                                             primitiveType: .line,
-                                             primitiveCount: indices.count/2,
-                                             bytesPerIndex: MemoryLayout<Int32>.size)
-            
-            return SCNGeometry(sources: [vertexSource], elements: [element])
-            
+    /*
+        Helper Methods
+     */
+    
+    func hitResult(forPoint point: CGPoint) -> SCNVector3? {
+        let hitTestResults = sceneView.hitTest(point, types: .featurePoint)
+        if let result = hitTestResults.first {
+            let vector = result.worldTransform.columns.3
+            return SCNVector3(vector.x, vector.y, vector.z)
+        } else {
+            return nil
         }
+    }
     
-    
-    func getDistanceStringBetween(pos1: SCNVector3, pos2: SCNVector3) -> String {
+    func nodeWithPosition(_ position: SCNVector3) -> SCNNode {
+        let sphere = SCNSphere(radius: 0.003)
         
-        let d = self.distanceBetweenPoints(A: pos1, B: pos2)
-        var result = ""
-                
-        let meter = stringValue(v: Float(d), unit: "meters")
-        result.append(meter)
-        result.append("\n")
+        sphere.firstMaterial?.diffuse.contents = UIColor.white
+        sphere.firstMaterial?.lightingModel = .constant
+        sphere.firstMaterial?.isDoubleSided = true
         
-        let f = self.foot_fromMeter(m: Float(d))
-        let feet = stringValue(v: Float(f), unit: "feet")
-        result.append(feet)
-        result.append("\n")
         
-        let inch = self.Inch_fromMeter(m: Float(d))
-        let inches = stringValue(v: Float(inch), unit: "inch")
-        result.append(inches)
-        result.append("\n")
+        let node = SCNNode(geometry: sphere)
+        node.position = position
         
-        let cm = self.CM_fromMeter(m: Float(d))
-        let cms = stringValue(v: Float(cm), unit: "cm")
-        result.append(cms)
-        
-        return result
+        return node
     }
     
-    /**
-     Distance between 2 points
-     */
-    func distanceBetweenPoints(A: SCNVector3, B: SCNVector3) -> CGFloat {
-        let l = sqrt(
-                    (A.x - B.x) * (A.x - B.x) +
-                    (A.y - B.y) * (A.y - B.y) +
-                    (A.z - B.z) * (A.z - B.z)
-        )
-        return CGFloat(l)
-    }
-    
-    /**
-     String with float value and unit
-     */
-    func stringValue(v: Float, unit: String) -> String {
-        let s = String(format: "%.1f %@", v, unit)
-        return s
-    }
-    
-    /**
-     Inch from meter
-     */
-    func Inch_fromMeter(m: Float) -> Float {
-        let v = m * 39.3701
-        return v
-    }
-    
-    /**
-     centimeter from meter
-     */
-    func CM_fromMeter(m: Float) -> Float {
-        let v = m * 100.0
-        return v
-    }
-    
-    /**
-     feet from meter
-     */
-    func foot_fromMeter(m: Float) -> Float {
-        let v = m * 3.28084
-        return v
-    }
-    
-    
-    func addText(text: String,pos: SCNVector3) {
-        let text = SCNText(string: text, extrusionDepth: 2)
-        let material = SCNMaterial()
-        material.diffuse.contents = UIColor.white
-        text.materials = [material]
-        let node = SCNNode()
-        let nodePos = SCNVector3(pos.x + 0.002, pos.y, pos.z)
-        node.position = nodePos
-        node.scale = SCNVector3(x:0.0005, y:0.0005, z:0.0005)
-        node.geometry = text
-        sceneView.scene.rootNode.addChildNode(node)
-    }
     
     func updateScaleFromCameraForNodes(_ nodes: [SCNNode], fromPointOfView pointOfView: SCNNode){
         
