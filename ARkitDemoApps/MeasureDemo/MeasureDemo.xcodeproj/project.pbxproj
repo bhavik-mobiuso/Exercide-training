@@ -20,6 +20,7 @@
 		FF29823729AE25D100D87057 /* MeasureDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29823629AE25D100D87057 /* MeasureDemoTests.swift */; };
 		FF29824129AE25D100D87057 /* MeasureDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29824029AE25D100D87057 /* MeasureDemoUITests.swift */; };
 		FF29824329AE25D100D87057 /* MeasureDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29824229AE25D100D87057 /* MeasureDemoUITestsLaunchTests.swift */; };
+		FF5DE2CC29B219DE00AB5B34 /* ImageMeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DE2CB29B219DE00AB5B34 /* ImageMeasureViewController.swift */; };
 		FF868B8F29B0718500B1946D /* MeasurementUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF868B8E29B0718500B1946D /* MeasurementUnit.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		FF29823C29AE25D100D87057 /* MeasureDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeasureDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF29824029AE25D100D87057 /* MeasureDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureDemoUITests.swift; sourceTree = "<group>"; };
 		FF29824229AE25D100D87057 /* MeasureDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FF5DE2CB29B219DE00AB5B34 /* ImageMeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMeasureViewController.swift; sourceTree = "<group>"; };
 		FF868B8E29B0718500B1946D /* MeasurementUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementUnit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				FF868B8E29B0718500B1946D /* MeasurementUnit.swift */,
 				FF1C112729B1E5A90043439B /* LineNode.swift */,
 				FF1C112929B1E5E80043439B /* SCNVector3.swift */,
+				FF5DE2CB29B219DE00AB5B34 /* ImageMeasureViewController.swift */,
 			);
 			path = MeasureDemo;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF5DE2CC29B219DE00AB5B34 /* ImageMeasureViewController.swift in Sources */,
 				FF1C112829B1E5A90043439B /* LineNode.swift in Sources */,
 				FF26B98829AF1ECF005A758E /* MeasureSCNView.swift in Sources */,
 				FF29822029AE25CF00D87057 /* AppDelegate.swift in Sources */,

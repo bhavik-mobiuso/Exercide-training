@@ -13,6 +13,7 @@ class MeasureViewController: UIViewController {
     @IBOutlet weak var centerPointImageView: UIImageView!
     @IBOutlet weak var sceneView: MeasureSCNView!
     @IBOutlet weak var clearBtn: UIButton!
+    @IBOutlet weak var captureBtn: UIButton!
     
     lazy var screenCenterPoint: CGPoint = {
         return centerPointImageView.center
