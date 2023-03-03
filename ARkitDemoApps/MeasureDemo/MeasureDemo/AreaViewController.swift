@@ -62,12 +62,13 @@ class AreaViewController: MeasureViewController {
     @IBAction func capturePhotoBtnTap(_ sender: UIButton) {
         
         print("CapturePhotoBtnTap")
-        
+        sceneView.pause()
         let renderedImg = self.sceneView.snapshot()
         UIImageWriteToSavedPhotosAlbum(renderedImg, nil, nil, nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.showToast(message: "Photo saved to cameraroll")
+            self.sceneView.run()
         })
         
     }
