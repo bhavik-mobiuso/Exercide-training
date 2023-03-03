@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		FF26B98829AF1ECF005A758E /* MeasureSCNView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26B98729AF1ECE005A758E /* MeasureSCNView.swift */; };
 		FF26B98C29AF1EEF005A758E /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26B98B29AF1EEF005A758E /* MeasureViewController.swift */; };
-		FF26B98E29AF1F08005A758E /* LineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26B98D29AF1F08005A758E /* LineNode.swift */; };
-		FF26B99029AF1F33005A758E /* SCNSphere+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26B98F29AF1F33005A758E /* SCNSphere+Init.swift */; };
 		FF26B99629AF32A1005A758E /* AreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26B99529AF32A1005A758E /* AreaViewController.swift */; };
 		FF29822029AE25CF00D87057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29821F29AE25CF00D87057 /* AppDelegate.swift */; };
 		FF29822229AE25CF00D87057 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29822129AE25CF00D87057 /* SceneDelegate.swift */; };
@@ -43,8 +41,6 @@
 /* Begin PBXFileReference section */
 		FF26B98729AF1ECE005A758E /* MeasureSCNView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureSCNView.swift; sourceTree = "<group>"; };
 		FF26B98B29AF1EEF005A758E /* MeasureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureViewController.swift; sourceTree = "<group>"; };
-		FF26B98D29AF1F08005A758E /* LineNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNode.swift; sourceTree = "<group>"; };
-		FF26B98F29AF1F33005A758E /* SCNSphere+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNSphere+Init.swift"; sourceTree = "<group>"; };
 		FF26B99529AF32A1005A758E /* AreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaViewController.swift; sourceTree = "<group>"; };
 		FF29821C29AE25CF00D87057 /* MeasureDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeasureDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF29821F29AE25CF00D87057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,10 +108,8 @@
 				FF26B99529AF32A1005A758E /* AreaViewController.swift */,
 				FF26B98B29AF1EEF005A758E /* MeasureViewController.swift */,
 				FF26B98729AF1ECE005A758E /* MeasureSCNView.swift */,
-				FF26B98F29AF1F33005A758E /* SCNSphere+Init.swift */,
 				FF29821F29AE25CF00D87057 /* AppDelegate.swift */,
 				FF29822129AE25CF00D87057 /* SceneDelegate.swift */,
-				FF26B98D29AF1F08005A758E /* LineNode.swift */,
 				FF29822529AE25CF00D87057 /* Main.storyboard */,
 				FF29822829AE25D100D87057 /* Assets.xcassets */,
 				FF29822A29AE25D100D87057 /* LaunchScreen.storyboard */,
@@ -274,8 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF26B98829AF1ECF005A758E /* MeasureSCNView.swift in Sources */,
-				FF26B99029AF1F33005A758E /* SCNSphere+Init.swift in Sources */,
-				FF26B98E29AF1F08005A758E /* LineNode.swift in Sources */,
 				FF29822029AE25CF00D87057 /* AppDelegate.swift in Sources */,
 				FF26B99629AF32A1005A758E /* AreaViewController.swift in Sources */,
 				FF29822229AE25CF00D87057 /* SceneDelegate.swift in Sources */,

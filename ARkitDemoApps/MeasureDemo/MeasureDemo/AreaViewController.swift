@@ -9,11 +9,11 @@ import UIKit
 import ARKit
 
 class AreaViewController: MeasureViewController {
-
     
     var lengthNodes = NSMutableArray()
     var lineNodes = NSMutableArray()
     var startNode: SCNNode?
+    var endNode: SCNNode?
     var lineNode: SCNNode?
     
     var isStartPointSelected: Bool = false
@@ -29,24 +29,15 @@ class AreaViewController: MeasureViewController {
         super.viewDidLoad()
         sceneView.delegate = self
     }
-    //New updated code
     
-    func hitResult() -> SCNVector3? {
-        
-        let results = sceneView.hitTest(view.center, types: .existingPlaneUsingExtent)
-        
-        
-        for result in results {
-            let hitPosition = self.positionFromTransform(result.worldTransform)
-            return hitPosition
+    func hitResult(forPoint point: CGPoint) -> SCNVector3? {
+        let hitTestResults = sceneView.hitTest(point, types: .featurePoint)
+        if let result = hitTestResults.first {
+            let vector = result.worldTransform.columns.3
+            return SCNVector3(vector.x, vector.y, vector.z)
+        } else {
+            return nil
         }
-        return SCNVector3()
-    }
-    
-    func positionFromTransform(_ transform: matrix_float4x4) -> SCNVector3{
-        return SCNVector3Make(transform.columns.3.x,
-                              transform.columns.3.y,
-                              transform.columns.3.z)
     }
     
     func nodeWithPosition(_ position: SCNVector3) -> SCNNode {
@@ -63,12 +54,12 @@ class AreaViewController: MeasureViewController {
         return node
     }
     
-    
     //MARK: - IBActions
     
     @IBAction func addPoint(_ sender: UIButton) {
         print("Add Button Tapped")
-        if let position: SCNVector3 = self.hitResult()  {
+        let pointLocation = view.convert(screenCenterPoint, to: sceneView)
+        if let position: SCNVector3 = sceneView.hitResult(forPoint: pointLocation)  {
             let node = self.nodeWithPosition(position)
             sceneView.scene.rootNode.addChildNode(node)
                 
@@ -78,26 +69,40 @@ class AreaViewController: MeasureViewController {
                 isStartPointSelected = true
             }
             else {
-                guard let curretPosition = self.hitResult(), let start = self.startNode else {
+                endNode = node
+                let distance = getDistanceStringBetween(pos1: startNode!.position, pos2: endNode!.position)
+                print(distance)
+                
+                addText(text: distance, pos: startNode!.position)
+                guard let curretPosition = sceneView.hitResult(forPoint: pointLocation), let start = self.startNode else {
                     return
                 }
                 self.lineNode = self.getDrawnLineFrom(pos1: curretPosition,pos2: start.position)
                 self.sceneView.scene.rootNode.addChildNode(self.lineNode!)
                 startNode = nil
                 isStartPointSelected = false
+                
             }
         }
         
     }
-    @IBAction func resetButtonTap(_ sender: UIButton) {
+    @IBAction func resetBtnTap(_ sender: UIButton) {
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
         node.removeFromParentNode() }
-        
         self.lineNode?.removeFromParentNode()
 
     }
     
-    @IBAction func calculateBtnTap(_ sender: Any) {
+    @IBAction func capturePhotoBtnTap(_ sender: UIButton) {
+        
+        print("CapturePhotoBtnTap")
+        
+        let renderedImg = self.sceneView.snapshot()
+        UIImageWriteToSavedPhotosAlbum(renderedImg, nil, nil, nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.showToast(message: "Photo saved to cameraroll")
+        })
         
     }
     
@@ -106,10 +111,15 @@ class AreaViewController: MeasureViewController {
 extension AreaViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        let dotNodes = allPointNodes as! [SCNNode]
+        if dotNodes.count > 0, let currentCameraPosition = self.sceneView.pointOfView {
+            updateScaleFromCameraForNodes(dotNodes, fromPointOfView: currentCameraPosition)
+        }
         
         DispatchQueue.main.async {
+            let pointLocation = self.view.convert(self.screenCenterPoint, to: self.sceneView)
             
-            guard let curretPosition = self.hitResult(), let start = self.startNode else {
+            guard let curretPosition = self.hitResult(forPoint: pointLocation), let start = self.startNode else {
                 return
             }
             self.lineNode?.removeFromParentNode()
@@ -119,17 +129,12 @@ extension AreaViewController: ARSCNViewDelegate {
         }
         
     }
-    
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        
-    }
-    func renderer(_ renderer: SCNSceneRenderer, willUpdate node: SCNNode, for anchor: ARAnchor) {
-        
-    }
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        
-    }
-    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
-        
+    func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
+        switch camera.trackingState {
+            case .normal:
+                break
+            default:
+                break
+        }
     }
 }

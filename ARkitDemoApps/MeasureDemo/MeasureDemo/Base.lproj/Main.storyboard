@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -37,32 +38,17 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d55-16-cOB">
                                         <rect key="frame" x="293" y="772" width="80" height="40"/>
-                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="CoQ-NE-XPl"/>
                                             <constraint firstAttribute="width" constant="80" id="Mjn-yc-UOj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Reset"/>
                                         <connections>
-                                            <action selector="resetButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c8M-KE-2Vh"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2K-u4-Ake">
-                                        <rect key="frame" x="20" y="772" width="80" height="40"/>
-                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Kbz-B4-WEN"/>
-                                            <constraint firstAttribute="width" constant="80" id="Ldl-OF-AcQ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Calculate"/>
-                                        <connections>
-                                            <action selector="calculateBtnTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JeA-uj-ife"/>
+                                            <action selector="resetBtnTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lnm-F4-Txz"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.inset.filled" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GKk-Ox-ZoJ">
@@ -73,21 +59,35 @@
                                             <constraint firstAttribute="height" constant="15" id="jVx-mF-4gH"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwr-Rc-RfU">
+                                        <rect key="frame" x="20" y="762" width="50" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="H1d-4J-wTQ"/>
+                                            <constraint firstAttribute="height" constant="50" id="lCs-fp-cC8"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="camera.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="capturePhotoBtnTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ana-1l-fTF"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="J2K-u4-Ake" firstAttribute="bottom" secondItem="WwD-Bp-YfF" secondAttribute="bottom" constant="-40" id="4V3-ml-ura"/>
                                     <constraint firstItem="d55-16-cOB" firstAttribute="trailing" secondItem="WwD-Bp-YfF" secondAttribute="trailing" constant="-20" id="6jN-4W-eog"/>
                                     <constraint firstAttribute="trailing" secondItem="WwD-Bp-YfF" secondAttribute="trailing" id="7lt-Z8-8GS"/>
                                     <constraint firstItem="d55-16-cOB" firstAttribute="bottom" secondItem="WwD-Bp-YfF" secondAttribute="bottom" constant="-40" id="BHQ-rw-vWe"/>
                                     <constraint firstItem="WwD-Bp-YfF" firstAttribute="top" secondItem="BNX-RZ-c1i" secondAttribute="top" id="Gmc-Ea-x9B"/>
                                     <constraint firstItem="GKk-Ox-ZoJ" firstAttribute="centerY" secondItem="BNX-RZ-c1i" secondAttribute="centerY" id="IPQ-UW-N87"/>
                                     <constraint firstItem="GKk-Ox-ZoJ" firstAttribute="centerX" secondItem="BNX-RZ-c1i" secondAttribute="centerX" id="WS2-lY-JoH"/>
-                                    <constraint firstItem="J2K-u4-Ake" firstAttribute="leading" secondItem="WwD-Bp-YfF" secondAttribute="leading" constant="20" id="f3z-d0-9lf"/>
                                     <constraint firstAttribute="bottom" secondItem="WwD-Bp-YfF" secondAttribute="bottom" id="lN1-0C-sIj"/>
+                                    <constraint firstAttribute="bottom" secondItem="cwr-Rc-RfU" secondAttribute="bottom" constant="40" id="qdp-qv-jYm"/>
                                     <constraint firstItem="hhi-hY-L8t" firstAttribute="bottom" secondItem="WwD-Bp-YfF" secondAttribute="bottom" constant="-50" id="sL0-oi-xzG"/>
                                     <constraint firstItem="hhi-hY-L8t" firstAttribute="centerX" secondItem="WwD-Bp-YfF" secondAttribute="centerX" id="u8r-Um-SL7"/>
                                     <constraint firstItem="WwD-Bp-YfF" firstAttribute="leading" secondItem="BNX-RZ-c1i" secondAttribute="leading" id="vaT-yh-mZS"/>
+                                    <constraint firstItem="cwr-Rc-RfU" firstAttribute="leading" secondItem="BNX-RZ-c1i" secondAttribute="leading" constant="20" id="zUd-h1-60N"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -102,6 +102,7 @@
                     </view>
                     <connections>
                         <outlet property="centerPointImageView" destination="GKk-Ox-ZoJ" id="80s-fl-Jtt"/>
+                        <outlet property="resetBtn" destination="d55-16-cOB" id="2Uv-Mb-KhD"/>
                         <outlet property="sceneView" destination="WwD-Bp-YfF" id="iwL-V0-T4w"/>
                     </connections>
                 </viewController>
@@ -111,14 +112,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera.circle.fill" catalog="system" width="128" height="123"/>
         <image name="circle.inset.filled" catalog="system" width="128" height="123"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

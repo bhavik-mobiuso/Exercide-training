@@ -12,10 +12,16 @@ class MeasureViewController: UIViewController {
 
     @IBOutlet weak var centerPointImageView: UIImageView!
     @IBOutlet weak var sceneView: MeasureSCNView!
+    @IBOutlet weak var resetBtn: UIButton!
     
     lazy var screenCenterPoint: CGPoint = {
         return centerPointImageView.center
     }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        resetBtn.layer.cornerRadius = 10
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,16 +44,7 @@ class MeasureViewController: UIViewController {
         let lineInBetween1 = SCNNode(geometry: line)
         return lineInBetween1
     }
-    
-//    func lineFrom(vector vector1: SCNVector3, toVector vector2: SCNVector3) -> SCNGeometry {
-//
-//        let indices : [Int32] = [0,1]
-//        let source = SCNGeometrySource(vertices: [vector1,vector2])
-//        let element = SCNGeometryElement(indices: indices, primitiveType: .line)
-//
-//        return SCNGeometry(sources: [source], elements: [element])
-//    }
-    
+
     func generateLine( startPoint: SCNVector3, endPoint: SCNVector3) -> SCNGeometry {
             
             let vertices: [SCNVector3] = [startPoint, endPoint]
@@ -153,12 +150,12 @@ class MeasureViewController: UIViewController {
         material.diffuse.contents = UIColor.white
         text.materials = [material]
         let node = SCNNode()
-        node.position = SCNVector3(x:0, y:0.02, z:-0.1)
-        node.scale = SCNVector3(x:0.01, y:0.01, z:0.01)
+        let nodePos = SCNVector3(pos.x + 0.002, pos.y, pos.z)
+        node.position = nodePos
+        node.scale = SCNVector3(x:0.0005, y:0.0005, z:0.0005)
         node.geometry = text
         sceneView.scene.rootNode.addChildNode(node)
     }
-    
     
     func updateScaleFromCameraForNodes(_ nodes: [SCNNode], fromPointOfView pointOfView: SCNNode){
         

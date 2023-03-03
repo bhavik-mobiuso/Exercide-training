@@ -21,6 +21,8 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App wants to access your photos to save images</string>
 	<key>NSCameraUsageDescription</key>
 	<string>App wants to access your access camera for measurement</string>
 </dict>
