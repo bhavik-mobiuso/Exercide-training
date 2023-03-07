@@ -8,15 +8,17 @@
 
 import UIKit
 import Vision
+import ARKit
 
 class DrawingBoundingBoxView: UIView {
     
     static private var colors: [String: UIColor] = [:]
-    var pointA: CGFloat?
-    var pointB: CGFloat?
+    var pointA: CGFloat!
+    var pointB: CGFloat!
     var isObjACounted:Bool = false
     
-    
+    var labelName: String = ""
+    var startPointSelected:Bool = false
     
     public func labelColor(with label: String) -> UIColor {
         if let color = DrawingBoundingBoxView.colors[label] {
@@ -59,21 +61,29 @@ class DrawingBoundingBoxView: UIView {
         let bgRect = prediction.boundingBox.applying(transform).applying(scale)
         
         let bgView = UIView(frame: bgRect)
-        bgView.layer.borderColor = color.cgColor
+        bgView.layer.borderColor = UIColor.red.cgColor
         bgView.layer.borderWidth = 4
         bgView.backgroundColor = UIColor.clear
         addSubview(bgView)
         
-        if !isObjACounted {
-            let objectPoint = bounds.minX + bgView.frame.minX + bgView.frame.width
-            pointA = bounds.width - objectPoint
-            isObjACounted = true
+      
+        if !startPointSelected && labelName != labelString {
+            pointA = bgRect.maxX
+            if let labelS = labelString {
+                labelName = labelS
+                startPointSelected = true
+            }
         }
         else {
-            pointB = bgView.frame.minX - pointA!
-            print(pointB)
-            
+            pointB = bgRect.minX
+            let width = pointB - pointA
+            let line = UIView(frame: CGRect(x: pointA, y: (bgRect.minY +  bgRect.maxY) /  2 - 25, width: width, height: 5.0))
+            line.backgroundColor = UIColor.systemYellow
+            line.layer.cornerRadius = 5
+            addSubview(line)
         }
+        
+        
         
         
         let aPath = UIBezierPath()
@@ -108,7 +118,9 @@ class DrawingBoundingBoxView: UIView {
         return sqrt(CGPointDistanceSquared(from: from, to: to))
     }
     
-   
+    func pointsToMM(_ value:CGFloat) -> CGFloat{
+        return value * 25.4/72.0
+    }
 }
 
 extension VNRecognizedObjectObservation {
@@ -124,5 +136,10 @@ extension CGRect {
         let wStr = String(format: "%.\(digit)f", width)
         let hStr = String(format: "%.\(digit)f", height)
         return "(\(xStr), \(yStr), \(wStr), \(hStr))"
+    }
+}
+extension CGPoint {
+    func distance(to point: CGPoint) -> CGFloat {
+        return sqrt(pow((point.x - x), 2) + pow((point.y - y), 2))
     }
 }

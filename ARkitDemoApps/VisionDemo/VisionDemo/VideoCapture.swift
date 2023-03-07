@@ -20,7 +20,7 @@ public class VideoCapture: NSObject {
     public var fps = 15
     
     let captureSession = AVCaptureSession()
-    let videoOutput = AVCaptureVideoDataOutput()
+    let videoOutput = AVCaptureVideoDataOutput() 
     let queue = DispatchQueue(label: "com.tucan9389.camera-queue")
     
     var lastTimestamp = CMTime()
