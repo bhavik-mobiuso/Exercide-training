@@ -42,14 +42,11 @@ class DrawingBoundingBoxView: UIView {
         
         
         if predictions.count < 3 {
-            print("No. Of Objects: ",predictions.count)
             for prediction in predictions {
                 createLabelAndBox(prediction: prediction)
             }
         }
-        print("More than two objects found")
-        
-        
+       
     }
     
     func createLabelAndBox(prediction: VNRecognizedObjectObservation) {
@@ -66,13 +63,10 @@ class DrawingBoundingBoxView: UIView {
         bgView.backgroundColor = UIColor.clear
         addSubview(bgView)
         
-      
-        if !startPointSelected && labelName != labelString {
+        if !startPointSelected {
+            startPointSelected = true
             pointA = bgRect.maxX
-            if let labelS = labelString {
-                labelName = labelS
-                startPointSelected = true
-            }
+        
         }
         else {
             pointB = bgRect.minX
@@ -82,9 +76,6 @@ class DrawingBoundingBoxView: UIView {
             line.layer.cornerRadius = 5
             addSubview(line)
         }
-        
-        
-        
         
         let aPath = UIBezierPath()
 
