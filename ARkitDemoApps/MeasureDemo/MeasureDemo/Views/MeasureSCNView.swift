@@ -25,11 +25,11 @@ open class MeasureSCNView: ARSCNView {
         
         self.automaticallyUpdatesLighting = true
         self.scene = scene
-        configuration.planeDetection = [.horizontal]
+        configuration.planeDetection = [.horizontal,.vertical]
     }
     
     func hitResult(forPoint point: CGPoint) -> SCNVector3? {
-        let hitTestResults = hitTest(point, types: .featurePoint)
+        let hitTestResults = hitTest(point, types: .existingPlaneUsingExtent)
         if let result = hitTestResults.first {
             let vector = result.worldTransform.columns.3
             return SCNVector3(vector.x, vector.y, vector.z)

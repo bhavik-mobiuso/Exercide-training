@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FF1C112829B1E5A90043439B /* LineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C112729B1E5A90043439B /* LineNode.swift */; };
 		FF1C112A29B1E5E80043439B /* SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C112929B1E5E80043439B /* SCNVector3.swift */; };
-		FF1C112C29B209160043439B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF1C112B29B209160043439B /* Main.storyboard */; };
 		FF26B98829AF1ECF005A758E /* MeasureSCNView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26B98729AF1ECE005A758E /* MeasureSCNView.swift */; };
 		FF26B98C29AF1EEF005A758E /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26B98B29AF1EEF005A758E /* MeasureViewController.swift */; };
 		FF26B99629AF32A1005A758E /* AreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26B99529AF32A1005A758E /* AreaViewController.swift */; };
@@ -20,8 +19,11 @@
 		FF29823729AE25D100D87057 /* MeasureDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29823629AE25D100D87057 /* MeasureDemoTests.swift */; };
 		FF29824129AE25D100D87057 /* MeasureDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29824029AE25D100D87057 /* MeasureDemoUITests.swift */; };
 		FF29824329AE25D100D87057 /* MeasureDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29824229AE25D100D87057 /* MeasureDemoUITestsLaunchTests.swift */; };
+		FF4606CE29BB38F100999867 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4606CD29BB38F100999867 /* Plane.swift */; };
 		FF5DE2CC29B219DE00AB5B34 /* ImageMeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DE2CB29B219DE00AB5B34 /* ImageMeasureViewController.swift */; };
+		FF741DF529BF31D400D31A11 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF741DF429BF31D400D31A11 /* ToastMessage.swift */; };
 		FF868B8F29B0718500B1946D /* MeasurementUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF868B8E29B0718500B1946D /* MeasurementUnit.swift */; };
+		FFD1674829BCA11D004B4D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD1674729BCA11D004B4D5D /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +46,6 @@
 /* Begin PBXFileReference section */
 		FF1C112729B1E5A90043439B /* LineNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineNode.swift; sourceTree = "<group>"; };
 		FF1C112929B1E5E80043439B /* SCNVector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
-		FF1C112B29B209160043439B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FF26B98729AF1ECE005A758E /* MeasureSCNView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureSCNView.swift; sourceTree = "<group>"; };
 		FF26B98B29AF1EEF005A758E /* MeasureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureViewController.swift; sourceTree = "<group>"; };
 		FF26B99529AF32A1005A758E /* AreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaViewController.swift; sourceTree = "<group>"; };
@@ -59,8 +60,11 @@
 		FF29823C29AE25D100D87057 /* MeasureDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeasureDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF29824029AE25D100D87057 /* MeasureDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureDemoUITests.swift; sourceTree = "<group>"; };
 		FF29824229AE25D100D87057 /* MeasureDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FF4606CD29BB38F100999867 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		FF5DE2CB29B219DE00AB5B34 /* ImageMeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMeasureViewController.swift; sourceTree = "<group>"; };
+		FF741DF429BF31D400D31A11 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		FF868B8E29B0718500B1946D /* MeasurementUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementUnit.swift; sourceTree = "<group>"; };
+		FFD1674729BCA11D004B4D5D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,19 +115,16 @@
 		FF29821E29AE25CF00D87057 /* MeasureDemo */ = {
 			isa = PBXGroup;
 			children = (
-				FF26B99529AF32A1005A758E /* AreaViewController.swift */,
-				FF26B98B29AF1EEF005A758E /* MeasureViewController.swift */,
-				FF26B98729AF1ECE005A758E /* MeasureSCNView.swift */,
-				FF29821F29AE25CF00D87057 /* AppDelegate.swift */,
-				FF29822129AE25CF00D87057 /* SceneDelegate.swift */,
-				FF1C112B29B209160043439B /* Main.storyboard */,
-				FF29822829AE25D100D87057 /* Assets.xcassets */,
-				FF29822A29AE25D100D87057 /* LaunchScreen.storyboard */,
-				FF29822D29AE25D100D87057 /* Info.plist */,
 				FF868B8E29B0718500B1946D /* MeasurementUnit.swift */,
 				FF1C112729B1E5A90043439B /* LineNode.swift */,
-				FF1C112929B1E5E80043439B /* SCNVector3.swift */,
-				FF5DE2CB29B219DE00AB5B34 /* ImageMeasureViewController.swift */,
+				FF4606CD29BB38F100999867 /* Plane.swift */,
+				FF741DF329BF31A200D31A11 /* Extesions */,
+				FFB90A2629BC9FF900B90FA8 /* Storyboard */,
+				FFB90A2829BCA02B00B90FA8 /* SupportFiles */,
+				FFB90A2729BCA00500B90FA8 /* Views */,
+				FFB90A2529BC9FEF00B90FA8 /* ViewControllers */,
+				FF29822829AE25D100D87057 /* Assets.xcassets */,
+				FF29822D29AE25D100D87057 /* Info.plist */,
 			);
 			path = MeasureDemo;
 			sourceTree = "<group>";
@@ -143,6 +144,51 @@
 				FF29824229AE25D100D87057 /* MeasureDemoUITestsLaunchTests.swift */,
 			);
 			path = MeasureDemoUITests;
+			sourceTree = "<group>";
+		};
+		FF741DF329BF31A200D31A11 /* Extesions */ = {
+			isa = PBXGroup;
+			children = (
+				FF1C112929B1E5E80043439B /* SCNVector3.swift */,
+				FF741DF429BF31D400D31A11 /* ToastMessage.swift */,
+			);
+			path = Extesions;
+			sourceTree = "<group>";
+		};
+		FFB90A2529BC9FEF00B90FA8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FF26B99529AF32A1005A758E /* AreaViewController.swift */,
+				FF26B98B29AF1EEF005A758E /* MeasureViewController.swift */,
+				FF5DE2CB29B219DE00AB5B34 /* ImageMeasureViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FFB90A2629BC9FF900B90FA8 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FFD1674729BCA11D004B4D5D /* Main.storyboard */,
+				FF29822A29AE25D100D87057 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		FFB90A2729BCA00500B90FA8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF26B98729AF1ECE005A758E /* MeasureSCNView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FFB90A2829BCA02B00B90FA8 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				FF29821F29AE25CF00D87057 /* AppDelegate.swift */,
+				FF29822129AE25CF00D87057 /* SceneDelegate.swift */,
+			);
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF1C112C29B209160043439B /* Main.storyboard in Resources */,
+				FFD1674829BCA11D004B4D5D /* Main.storyboard in Resources */,
 				FF29822C29AE25D100D87057 /* LaunchScreen.storyboard in Resources */,
 				FF29822929AE25D100D87057 /* Assets.xcassets in Resources */,
 			);
@@ -278,6 +324,8 @@
 			files = (
 				FF5DE2CC29B219DE00AB5B34 /* ImageMeasureViewController.swift in Sources */,
 				FF1C112829B1E5A90043439B /* LineNode.swift in Sources */,
+				FF4606CE29BB38F100999867 /* Plane.swift in Sources */,
+				FF741DF529BF31D400D31A11 /* ToastMessage.swift in Sources */,
 				FF26B98829AF1ECF005A758E /* MeasureSCNView.swift in Sources */,
 				FF29822029AE25CF00D87057 /* AppDelegate.swift in Sources */,
 				FF26B99629AF32A1005A758E /* AreaViewController.swift in Sources */,
@@ -456,6 +504,8 @@
 				DEVELOPMENT_TEAM = 54978M7XA8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeasureDemo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App wants to access your access camera for measurement";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App wants to access your photos to save images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -467,7 +517,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobiuso.VisionDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobiuso.VisionDem1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -485,6 +535,8 @@
 				DEVELOPMENT_TEAM = 54978M7XA8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeasureDemo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App wants to access your access camera for measurement";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App wants to access your photos to save images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -496,7 +548,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobiuso.VisionDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobiuso.VisionDem1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

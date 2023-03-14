@@ -36,15 +36,15 @@
                                             <action selector="addPoint:" destination="BYZ-38-t0r" eventType="touchUpInside" id="52g-4B-4Hi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d55-16-cOB" userLabel="clearBtn">
-                                        <rect key="frame" x="20" y="82" width="80" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d55-16-cOB" userLabel="clearBtn">
+                                        <rect key="frame" x="20" y="82" width="80" height="50"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="CoQ-NE-XPl"/>
+                                            <constraint firstAttribute="height" constant="50" id="CoQ-NE-XPl"/>
                                             <constraint firstAttribute="width" constant="80" id="Mjn-yc-UOj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="clear"/>
                                         <connections>
@@ -59,14 +59,14 @@
                                             <constraint firstAttribute="height" constant="15" id="jVx-mF-4gH"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwr-Rc-RfU">
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwr-Rc-RfU">
                                         <rect key="frame" x="20" y="762" width="50" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="H1d-4J-wTQ"/>
                                             <constraint firstAttribute="height" constant="50" id="lCs-fp-cC8"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="camera.circle.fill" catalog="system"/>
                                         <connections>
@@ -86,16 +86,16 @@
                                             <action selector="unitBtnTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sZS-Pu-8hr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZZ-2V-uG2" userLabel="clearBtn">
-                                        <rect key="frame" x="313" y="72" width="60" height="60"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZZ-2V-uG2" userLabel="clearBtn">
+                                        <rect key="frame" x="303" y="82" width="70" height="50"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="TuK-mj-XTz"/>
-                                            <constraint firstAttribute="width" constant="60" id="rJl-Y5-ifp"/>
+                                            <constraint firstAttribute="height" constant="50" id="TuK-mj-XTz"/>
+                                            <constraint firstAttribute="width" constant="70" id="rJl-Y5-ifp"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
-                                        <state key="normal" image="arrowshape.turn.up.backward.fill" catalog="system"/>
+                                        <state key="normal" image="arrow.uturn.left" catalog="system"/>
                                         <connections>
                                             <action selector="undoBtnTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cfs-Jx-tZr"/>
                                         </connections>
@@ -132,10 +132,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="captureBtn" destination="cwr-Rc-RfU" id="sCe-P4-AVM"/>
+                        <outlet property="addPointBtn" destination="hhi-hY-L8t" id="jjF-rY-FTG"/>
+                        <outlet property="captureBtn" destination="cwr-Rc-RfU" id="nEx-mQ-EMw"/>
                         <outlet property="centerPointImageView" destination="GKk-Ox-ZoJ" id="80s-fl-Jtt"/>
                         <outlet property="clearBtn" destination="d55-16-cOB" id="3sN-PM-DDm"/>
                         <outlet property="sceneView" destination="WwD-Bp-YfF" id="iwL-V0-T4w"/>
+                        <outlet property="undoBtn" destination="3ZZ-2V-uG2" id="xri-o6-B3d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -217,7 +219,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="104"/>
+        <image name="arrow.uturn.left" catalog="system" width="128" height="113"/>
         <image name="camera.circle.fill" catalog="system" width="128" height="123"/>
         <image name="circle.inset.filled" catalog="system" width="128" height="123"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>

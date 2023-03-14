@@ -68,9 +68,7 @@ final class Line {
     fileprivate let sceneView: ARSCNView!
     fileprivate let startVector: SCNVector3!
     fileprivate let unit: DistanceUnit!
-    fileprivate var startNodes: [SCNNode] = []
-    fileprivate var endNodes: [SCNNode] = []
- 
+    
     init(sceneView: ARSCNView, startVector: SCNVector3, unit: DistanceUnit) {
         self.sceneView = sceneView
         self.startVector = startVector
@@ -85,14 +83,13 @@ final class Line {
         startNode.scale = SCNVector3(1/200.0, 1/200.0, 1/200.0)
         startNode.position = startVector
         sceneView.scene.rootNode.addChildNode(startNode)
-        startNodes.append(startNode)
-    
+       
         endNode = SCNNode(geometry: dot)
         startNode.name = "dot"
         endNode.scale = SCNVector3(1/200.0, 1/200.0, 1/200.0)
         
         text = SCNText(string: "", extrusionDepth: 0.1)
-        text.font = .systemFont(ofSize: 5)
+        text.font = .systemFont(ofSize: 10)
         text.firstMaterial?.diffuse.contents = color
         text.alignmentMode  = CATextLayerAlignmentMode.center.rawValue
         text.truncationMode = CATextLayerTruncationMode.middle.rawValue
@@ -134,9 +131,5 @@ final class Line {
         lineNode?.removeFromParentNode()
         endNode.removeFromParentNode()
         textNode.removeFromParentNode()
-    }
-    
-    func Nodes () {
-        print(startNodes)
     }
 }
