@@ -33,7 +33,8 @@ class AreaViewController: MeasureViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-    
+        
+        self.showStatusMsg(text: "Move your phone on surface")
     }
     //MARK: - IBActions
     
@@ -76,7 +77,10 @@ class AreaViewController: MeasureViewController {
     
     @IBAction func clearBtnTap(_ sender: UIButton) {
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
-        node.removeFromParentNode() }
+            for line in lines {
+                line.removeFromParentNode()
+            }
+        }
         self.currentLine?.removeFromParentNode()
         changeBtnMode(isEnabled: false)
     }
@@ -114,6 +118,9 @@ class AreaViewController: MeasureViewController {
         
         let pointLocation = view.convert(screenCenterPoint, to: sceneView)
         if let position: SCNVector3 = sceneView.hitResult(forPoint: pointLocation){
+            self.addPointBtn.isHighlighted = false
+            self.addPointBtn.isEnabled = true
+            self.showStatusMsg(text: "Move your phone on object")
             if isMeasuring {
                 if startValue == vectorZero {
                     startValue = position
@@ -124,18 +131,23 @@ class AreaViewController: MeasureViewController {
                 //messageLabel.text = currentLine?.distance(to: endValue) ?? "Calculating…"
             }
         }
+        else {
+            self.addPointBtn.isHighlighted = true
+            self.addPointBtn.isEnabled = false
+            self.showStatusMsg(text: "Move your phone on object")
+        }
         
     }
     func addPlane(node: SCNNode, anchor: ARPlaneAnchor) {
         let plane = Plane(anchor)
         planes[anchor] = plane
+        print(plane.planeAnchor.alignment)
         node.addChildNode(plane)
         DispatchQueue.main.async {
             self.statusLabel.removeFromSuperview()
             self.addPointBtn.isHighlighted = false
             self.addPointBtn.isEnabled = true
             self.showStatusMsg(text: "Ready to measure")
-            
         }
     }
     
@@ -161,13 +173,16 @@ class AreaViewController: MeasureViewController {
         statusLabel.text = text
         statusLabel.numberOfLines = 5
         statusLabel.clipsToBounds = true
-        statusLabel.layer.cornerRadius = 2
-        statusLabel.textColor = .white
-        statusLabel.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        statusLabel.layer.cornerRadius = 10
+        statusLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        statusLabel.textColor = .lightGray
+        statusLabel.backgroundColor = UIColor.darkGray.withAlphaComponent(0.7)
         statusLabel.textAlignment = .center
         self.view.addSubview(statusLabel)
         let maxSize = CGSize(width: 150, height: 300)
-        let size = statusLabel.sizeThatFits(maxSize)
+        var size = statusLabel.sizeThatFits(maxSize)
+        size.width = size.width + 15.0
+        size.height = size.height + 10.0
         statusLabel.frame = CGRect(origin: CGPoint(x: 10, y: view.bounds.minY + 200), size: size)
         statusLabel.center.x = view.center.x
     }
@@ -177,11 +192,10 @@ class AreaViewController: MeasureViewController {
             switch tState {
                 case .normal:
                     print("Noraml scenario")
-                    showStatusMsg(text: "Move your phone on surface")
+                    self.showStatusMsg(text: "Ready to measure")
                 case .notAvailable:
                     print("Tracking unavailable")
                     showStatusMsg(text: "Tracking is unavailable")
-                    
                 case .limited(let reason):
                     
                     switch reason {

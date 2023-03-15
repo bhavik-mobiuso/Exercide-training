@@ -25,7 +25,8 @@ open class MeasureSCNView: ARSCNView {
         
         self.automaticallyUpdatesLighting = true
         self.scene = scene
-        configuration.planeDetection = [.horizontal,.vertical]
+        configuration.isLightEstimationEnabled = true
+        configuration.planeDetection = [.vertical,.horizontal]
     }
     
     func hitResult(forPoint point: CGPoint) -> SCNVector3? {
