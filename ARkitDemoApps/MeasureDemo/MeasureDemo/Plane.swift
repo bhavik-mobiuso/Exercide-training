@@ -18,7 +18,7 @@ class Plane: SCNNode {
         self.planeAnchor = anchor
         self.planeGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.systemBlue
+        material.diffuse.contents = UIColor.clear
         self.planeGeometry.materials = [material]
         self.planeGeometry.firstMaterial?.transparency = 0.5
         self.planeNode = SCNNode(geometry: planeGeometry)

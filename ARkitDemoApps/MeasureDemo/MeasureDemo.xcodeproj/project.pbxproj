@@ -20,9 +20,18 @@
 		FF29824129AE25D100D87057 /* MeasureDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29824029AE25D100D87057 /* MeasureDemoUITests.swift */; };
 		FF29824329AE25D100D87057 /* MeasureDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29824229AE25D100D87057 /* MeasureDemoUITestsLaunchTests.swift */; };
 		FF4606CE29BB38F100999867 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4606CD29BB38F100999867 /* Plane.swift */; };
+		FF5B9BC429C2DB5200EEA28F /* VirtualObjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5B9BC329C2DB5200EEA28F /* VirtualObjectLoader.swift */; };
+		FF5B9BC629C2DB5B00EEA28F /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5B9BC529C2DB5B00EEA28F /* VirtualObject.swift */; };
+		FF5B9BC929C2DB9E00EEA28F /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5B9BC729C2DB9E00EEA28F /* FocusSquareSegment.swift */; };
+		FF5B9BCA29C2DB9E00EEA28F /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5B9BC829C2DB9E00EEA28F /* FocusSquare.swift */; };
+		FF5B9BCE29C31B5500EEA28F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5B9BCD29C31B5500EEA28F /* ViewController.swift */; };
 		FF5DE2CC29B219DE00AB5B34 /* ImageMeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DE2CB29B219DE00AB5B34 /* ImageMeasureViewController.swift */; };
 		FF741DF529BF31D400D31A11 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF741DF429BF31D400D31A11 /* ToastMessage.swift */; };
 		FF868B8F29B0718500B1946D /* MeasurementUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF868B8E29B0718500B1946D /* MeasurementUnit.swift */; };
+		FF9E513E29C1DA2700B77E52 /* AreaViewController + ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9E513D29C1DA2700B77E52 /* AreaViewController + ARSCNViewDelegate.swift */; };
+		FF9E514029C1DA8C00B77E52 /* AreaViewController + Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9E513F29C1DA8C00B77E52 /* AreaViewController + Actions.swift */; };
+		FF9E514229C1E20100B77E52 /* AreaViewController + CoachingOverlaye.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9E514129C1E20100B77E52 /* AreaViewController + CoachingOverlaye.swift */; };
+		FF9E514429C1EF8000B77E52 /* ThresoldPanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9E514329C1EF8000B77E52 /* ThresoldPanGesture.swift */; };
 		FFD1674829BCA11D004B4D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD1674729BCA11D004B4D5D /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -61,9 +70,18 @@
 		FF29824029AE25D100D87057 /* MeasureDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureDemoUITests.swift; sourceTree = "<group>"; };
 		FF29824229AE25D100D87057 /* MeasureDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF4606CD29BB38F100999867 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		FF5B9BC329C2DB5200EEA28F /* VirtualObjectLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectLoader.swift; sourceTree = "<group>"; };
+		FF5B9BC529C2DB5B00EEA28F /* VirtualObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
+		FF5B9BC729C2DB9E00EEA28F /* FocusSquareSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
+		FF5B9BC829C2DB9E00EEA28F /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		FF5B9BCD29C31B5500EEA28F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FF5DE2CB29B219DE00AB5B34 /* ImageMeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMeasureViewController.swift; sourceTree = "<group>"; };
 		FF741DF429BF31D400D31A11 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		FF868B8E29B0718500B1946D /* MeasurementUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementUnit.swift; sourceTree = "<group>"; };
+		FF9E513D29C1DA2700B77E52 /* AreaViewController + ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AreaViewController + ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
+		FF9E513F29C1DA8C00B77E52 /* AreaViewController + Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AreaViewController + Actions.swift"; sourceTree = "<group>"; };
+		FF9E514129C1E20100B77E52 /* AreaViewController + CoachingOverlaye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AreaViewController + CoachingOverlaye.swift"; sourceTree = "<group>"; };
+		FF9E514329C1EF8000B77E52 /* ThresoldPanGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThresoldPanGesture.swift; sourceTree = "<group>"; };
 		FFD1674729BCA11D004B4D5D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,9 +137,11 @@
 				FF1C112729B1E5A90043439B /* LineNode.swift */,
 				FF4606CD29BB38F100999867 /* Plane.swift */,
 				FF741DF329BF31A200D31A11 /* Extesions */,
+				FF5B9BCB29C2FDB100EEA28F /* FocusSquare */,
 				FFB90A2629BC9FF900B90FA8 /* Storyboard */,
 				FFB90A2829BCA02B00B90FA8 /* SupportFiles */,
 				FFB90A2729BCA00500B90FA8 /* Views */,
+				FF5B9BCC29C2FDD200EEA28F /* VirtualObject */,
 				FFB90A2529BC9FEF00B90FA8 /* ViewControllers */,
 				FF29822829AE25D100D87057 /* Assets.xcassets */,
 				FF29822D29AE25D100D87057 /* Info.plist */,
@@ -146,6 +166,24 @@
 			path = MeasureDemoUITests;
 			sourceTree = "<group>";
 		};
+		FF5B9BCB29C2FDB100EEA28F /* FocusSquare */ = {
+			isa = PBXGroup;
+			children = (
+				FF5B9BC829C2DB9E00EEA28F /* FocusSquare.swift */,
+				FF5B9BC729C2DB9E00EEA28F /* FocusSquareSegment.swift */,
+			);
+			path = FocusSquare;
+			sourceTree = "<group>";
+		};
+		FF5B9BCC29C2FDD200EEA28F /* VirtualObject */ = {
+			isa = PBXGroup;
+			children = (
+				FF5B9BC529C2DB5B00EEA28F /* VirtualObject.swift */,
+				FF5B9BC329C2DB5200EEA28F /* VirtualObjectLoader.swift */,
+			);
+			path = VirtualObject;
+			sourceTree = "<group>";
+		};
 		FF741DF329BF31A200D31A11 /* Extesions */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,8 +197,13 @@
 			isa = PBXGroup;
 			children = (
 				FF26B99529AF32A1005A758E /* AreaViewController.swift */,
+				FF9E513D29C1DA2700B77E52 /* AreaViewController + ARSCNViewDelegate.swift */,
+				FF9E513F29C1DA8C00B77E52 /* AreaViewController + Actions.swift */,
 				FF26B98B29AF1EEF005A758E /* MeasureViewController.swift */,
+				FF9E514129C1E20100B77E52 /* AreaViewController + CoachingOverlaye.swift */,
+				FF9E514329C1EF8000B77E52 /* ThresoldPanGesture.swift */,
 				FF5DE2CB29B219DE00AB5B34 /* ImageMeasureViewController.swift */,
+				FF5B9BCD29C31B5500EEA28F /* ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -325,14 +368,23 @@
 				FF5DE2CC29B219DE00AB5B34 /* ImageMeasureViewController.swift in Sources */,
 				FF1C112829B1E5A90043439B /* LineNode.swift in Sources */,
 				FF4606CE29BB38F100999867 /* Plane.swift in Sources */,
+				FF9E514429C1EF8000B77E52 /* ThresoldPanGesture.swift in Sources */,
 				FF741DF529BF31D400D31A11 /* ToastMessage.swift in Sources */,
 				FF26B98829AF1ECF005A758E /* MeasureSCNView.swift in Sources */,
+				FF5B9BCA29C2DB9E00EEA28F /* FocusSquare.swift in Sources */,
 				FF29822029AE25CF00D87057 /* AppDelegate.swift in Sources */,
 				FF26B99629AF32A1005A758E /* AreaViewController.swift in Sources */,
+				FF5B9BC629C2DB5B00EEA28F /* VirtualObject.swift in Sources */,
+				FF5B9BCE29C31B5500EEA28F /* ViewController.swift in Sources */,
+				FF9E514229C1E20100B77E52 /* AreaViewController + CoachingOverlaye.swift in Sources */,
+				FF5B9BC429C2DB5200EEA28F /* VirtualObjectLoader.swift in Sources */,
 				FF29822229AE25CF00D87057 /* SceneDelegate.swift in Sources */,
+				FF9E514029C1DA8C00B77E52 /* AreaViewController + Actions.swift in Sources */,
+				FF5B9BC929C2DB9E00EEA28F /* FocusSquareSegment.swift in Sources */,
 				FF1C112A29B1E5E80043439B /* SCNVector3.swift in Sources */,
 				FF868B8F29B0718500B1946D /* MeasurementUnit.swift in Sources */,
 				FF26B98C29AF1EEF005A758E /* MeasureViewController.swift in Sources */,
+				FF9E513E29C1DA2700B77E52 /* AreaViewController + ARSCNViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

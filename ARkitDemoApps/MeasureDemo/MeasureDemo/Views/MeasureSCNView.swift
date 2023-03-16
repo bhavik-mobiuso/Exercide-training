@@ -39,6 +39,20 @@ open class MeasureSCNView: ARSCNView {
         }
     }
     
+//    func hitResult(forPoint point: CGPoint) -> SCNVector3? {
+//        let hitTestOptions: [SCNHitTestOption: Any] = [.boundingBoxOnly: true]
+//        let hitTestResults = hitTest(point, options: hitTestOptions)
+//
+//        if let result = hitTestResults.first {
+//            let vector = result.worldCoordinates
+//
+//            return vector
+//        } else {
+//            return nil
+//        }
+//    }
+    
+    
     //MARK: - Public helper methods
     
     func run() {
